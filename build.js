@@ -8,7 +8,7 @@ const { Feed } = require('feed');
 const SITE = {
   title: 'TechGuru',
   description: 'Your daily dose of tech — AI, web dev, programming, and everything in between.',
-  url: 'https://techguru.netlify.app', // Update after Netlify deploy
+  url: 'https://techguru2026.netlify.app',
   author: 'TechGuru',
   language: 'en',
 };
