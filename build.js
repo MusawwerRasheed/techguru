@@ -36,6 +36,13 @@ function formatDate(dateStr) {
   return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
+function formatIsoDate(d) {
+  if (!d) return new Date().toISOString().split('T')[0];
+  const dateObj = d instanceof Date ? d : new Date(d);
+  if (isNaN(dateObj.getTime())) return new Date().toISOString().split('T')[0];
+  return dateObj.toISOString().split('T')[0];
+}
+
 function estimateReadTime(content) {
   const words = content.split(/\s+/).length;
   return Math.max(1, Math.ceil(words / 200));
@@ -65,7 +72,7 @@ function getAllPosts() {
     return {
       slug,
       title: attributes.title || slug,
-      date: attributes.date || new Date().toISOString().split('T')[0],
+      date: formatIsoDate(attributes.date),
       description: attributes.description || '',
       tags: attributes.tags || [],
       cover: attributes.cover || null,
